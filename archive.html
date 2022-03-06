@@ -1,0 +1,871 @@
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>맛집 컨시어지 서비스, 밥면빵</title>
+  <meta name="description"
+    content="맛집 전문 크리에이터가 상황에 맞는 맛집을 추천드립니다. 한 번도 안 쓴 사람은 있어도, 한 번만 쓴 사람은 없는 서비스. 점심, 소개팅, 회식, 상견례, 부모님 등 모든 상황에 대해 물어보세요">
+  <meta name="keywords" content="맛집 추천, 강남 맛집, 홍대 맛집, 모임 장소, 회식 장소">
+  <meta property="og:title" content="밥면빵">
+  <meta property="og:image" content="https://rinobr.github.io/images/img-season1-end.jpg">
+  <meta property="og:description" content="7명이 함께하는 사이드 프로젝트">
+  <meta property="og:url" content="https://rinobr.github.io">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://rinobr.github.io">
+  <link rel="stylesheet" href="./app.css">
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,500,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
+  <!-- Facebook Pixel -->
+  <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
+  <script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-5R3QGMP"></script>
+  <script src="https://connect.facebook.net/signals/config/623906851445668?v=2.9.27&amp;r=stable" async=""></script>
+  <script async="" src="https://connect.facebook.net/en_US/fbevents.js"></script>
+  <script>
+    !function (f, b, e, v, n, t, s) {
+      if (f.fbq) return; n = f.fbq = function () {
+        n.callMethod ?
+          n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+      };
+      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+      n.queue = []; t = b.createElement(e); t.async = !0;
+      t.src = v; s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s)
+    }(window, document, 'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '623906851445668');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=623906851445668&ev=PageView&noscript=1" /></noscript>
+  <!-- End Facebook Pixel -->
+  <!-- Google Analytics -->
+  <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-138212112-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-138212112-1');
+  </script>
+  <!-- End Google Analytics -->
+  <!-- Google Tag Manager -->
+  <script>
+    (function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-5R3QGMP');
+  </script>
+  <!-- End Google Tag Manager -->
+</head>
+
+<body style="margin-bottom: 18px;">
+  <div id="modal" style="display: none;">
+    <div class="modal_inner">
+      <div class="modal_close"></div>
+      <h3 class="modal_title"></h3>
+      <div class="modal_messages">
+      </div>
+      <div class="modal_buttons">
+      </div>
+    </div>
+  </div>
+  <script>
+    const modal_el = document.querySelector("#modal")
+
+    const anaba_modal = {
+      set_title: (title) => {
+        modal_el.querySelector(".modal_title").innerHTML = title
+
+        return anaba_modal
+      },
+      add_message: (message) => {
+        const new_message_el = document.createElement("p")
+        new_message_el.innerHTML = message
+
+        const messages_el = modal_el.querySelector(".modal_messages")
+        messages_el.appendChild(new_message_el)
+
+        return anaba_modal
+      },
+      add_button: (text, func, opts = {}) => {
+        const new_button_el = document.createElement("div")
+        new_button_el.innerHTML = text
+        new_button_el.onclick = func
+
+        if (opts["bold"]) {
+          new_button_el.style.fontWeight = "bold"
+        }
+
+        const buttons_el = modal_el.querySelector(".modal_buttons")
+        buttons_el.appendChild(new_button_el)
+
+        return anaba_modal
+      },
+      show: () => {
+        modal_el.style.display = "block"
+      },
+      hide: () => {
+        modal_el.style.display = "none"
+      }
+    }
+
+    modal_el.onclick = () => {
+      anaba_modal.hide()
+    }
+
+    modal_el.querySelector(".modal_inner").onclick = (e) => {
+      e.stopPropagation()
+    }
+
+    modal_el.querySelector(".modal_close").onclick = () => {
+      anaba_modal.hide()
+    }
+
+  </script>
+  <header>
+    <div class="header_alert">
+      <span>밥면빵 시즌1이 종료되었습니다. <br class="mobile_break">그동안의 성원에 다시 한 번 감사드리며, <br class="mobile_break">조만간 밥면빵 시즌2로
+        찾아뵐게요!</span>
+    </div>
+    <div class="header_main header_theme_1" style="opacity: 1;">
+      <section class="container">
+        <div>
+          <a href="./archive.html">
+            <div class="header_logo theme-background"></div>
+          </a>
+        </div>
+      </section>
+    </div>
+  </header>
+
+  <main role="main" class="main">
+    <p class="alert alert-info" role="alert"></p>
+    <p class="alert alert-danger" role="alert"></p>
+    <div style="display: none;">
+      <img src="./images/img-process-1.svg">
+      <img src="./images/img-process-2.svg">
+      <img src="./images/img-process-3.svg">
+      <img src="./images/img-process-4.svg">
+    </div>
+    <div class="landing_main"
+      style="background-image: url(&quot;./images/w_main_tea.jpg&quot;); background-position: center center;">
+      <video class="landing_main_video" muted="" playsinline="" loop="" src="./videos/w_main_tea.mp4"
+        style="object-position: center center;"></video>
+      <div class="landing_main_gradient">
+        <section class="container container-first">
+          <div class="landing_main_title">
+            <h1>고민하는 당신을 위한<br>맛집 컨시어지 서비스</h1>
+            <p><i>(Concierge)</i></p>
+          </div>
+          <div class="landing_main_desc">
+            <div class="landing_main_logo"></div>
+            <div class="landing_main_msg">
+              <p>맛집 코디네이터가 1:1로 직접 상담합니다.</p>
+              <p>고객의 상황을 고려해 광고 없는 맛집을 추천합니다.</p>
+              <p>24시간 내에 빠르고 정확한 맛집 정보를 전달합니다.</p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+    <div class="landing_use">
+      <section class="container">
+        <div class="landing_use_left">
+          <h2 class="landing_use_category">
+            <span>이용방법</span>
+          </h2>
+          <h3>밥면빵 맛집 추천,<br>이렇게 진행됩니다</h3>
+          <div class="landing_use_hashtags">
+            <div class="landing_use_hashtag">
+              <p>#소개팅</p>
+            </div>
+            <div class="landing_use_hashtag">
+              <p>#회식</p>
+            </div>
+            <div class="landing_use_hashtag">
+              <p>#연인과_기념일</p>
+            </div>
+            <div class="landing_use_hashtag">
+              <p>#바이어_미팅</p>
+            </div>
+            <div class="landing_use_hashtag">
+              <p>#2시간접수_24시간해결</p>
+            </div>
+          </div>
+        </div>
+        <div class="landing_use_right">
+          <div class="landing_use_cases">
+            <a class="landing_use_case" data[number]="1" href="#" active="true">맛집 질문</a>
+            <a class="landing_use_case" data[number]="2" href="#">맛집 상담</a>
+            <a class="landing_use_case" data[number]="3" href="#">솔루션 제안</a>
+            <a class="landing_use_case" data[number]="4" href="#">추가 제안</a>
+          </div>
+          <div>
+            <div class="landing_phone_out"></div>
+            <div id="landing_use_img1" class="landing_use_img"></div>
+          </div>
+          <div>
+            <div id="landing_use_desc1" class="landing_use_desc" style="display: block;">기본 질문을 통해 상황을 진단합니다.</div>
+            <div id="landing_use_desc2" class="landing_use_desc" style="display: none;">기본 정보와 상담을 통해 취향을 파악합니다.</div>
+            <div id="landing_use_desc3" class="landing_use_desc" style="display: none;">밥면빵만의 분석으로 취향저격 맛집을 제안합니다.</div>
+            <div id="landing_use_desc4" class="landing_use_desc" style="display: none;">맛집 솔루션의 수정/추가를 요청할 수 있습니다.</div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <div class="landing_statictics">
+      <section class="container">
+        <div class="landing_statictics_content">
+          <p>함께한 사람들</p>
+          <p><strong>2,007</strong></p>
+        </div>
+        <div class="landing_statictics_content">
+          <p>선별된 음식점</p>
+          <p><strong>4,252</strong></p>
+        </div>
+        <div class="landing_statictics_content">
+          <p>서비스 만족도</p>
+          <p><strong>99%</strong></p>
+        </div>
+      </section>
+    </div>
+    <div class="landing_review">
+      <section class="container">
+        <h2 class="landing_review_category">
+          <span>멤버십 후기</span>
+        </h2>
+        <h3>밥면빵으로<br>고민을 해결한 분들</h3>
+      </section>
+      <section class="landing_review_container glide--ltr glide--carousel glide--swipeable">
+        <div class="landing_review_list glide__track" data-glide-el="track">
+          <ul class="glide__slides"
+            style="transition: transform 400ms cubic-bezier(0.165, 0.84, 0.44, 1) 0s; width: 5652px; transform: translate3d(-3672px, 0px, 0px);">
+            <li class="review_item glide__slide glide__slide--clone" style="width: 348px; margin-right: 30px;">
+              <div class="review_item_header">
+                <img class="review_item_img" src="./images/img-review-pf-jw.png">
+                <div class="review_item_reviewer">
+                  <div>
+                    <span class="review_item_reviewer_name">이재욱</span>
+                    <span class="review_item_reviewer_info">27/프리랜서(재활,운동)</span>
+                  </div>
+                  <div class="review_item_rating">
+
+                    <img class="review_item_star" src="./images/ic-star-full.svg">
+
+                    <img class="review_item_star" src="./images/ic-star-full.svg">
+
+                    <img class="review_item_star" src="./images/ic-star-full.svg">
+
+                    <img class="review_item_star" src="./images/ic-star-full.svg">
+
+                    <img class="review_item_star" src="./images/ic-star-full.svg">
+                    <span>5</span>
+                  </div>
+                </div>
+              </div>
+              <div class="review_item_content">네이버에서 검색해서 굳이 블로그를 보지 않아도 되고, 가장 큰 장점은 내가 원하는 테마를 3개 이상 말해도 모든 걸 감안해서
+                추천해주기 때문에 너무 만족스럽습니다. 3곳을 추천해주는데 다 가 볼 정도에요ㅎㅎ 친구들과 만나거나, 연인과 데이트할 때 식상하고 흔한 곳에 익숙해지지 않기 위한 최고의
+                선택입니다🙇🏻‍♂️</div>
+            </li>
+            <li class="review_item glide__slide glide__slide--clone"
+              style="width: 348px; margin-left: 30px; margin-right: 30px;">
+              <div class="review_item_header">
+                <img class="review_item_img" src="./images/img-review-pf-kw.png">
+                <div class="review_item_reviewer">
+                  <div>
+                    <span class="review_item_reviewer_name">김경욱</span>
+                    <span class="review_item_reviewer_info">33/마트오빠</span>
+                  </div>
+                  <div class="review_item_rating">
+
+                    <img class="review_item_star" src="./images/ic-star-full.svg">
+
+                    <img class="review_item_star" src="./images/ic-star-full.svg">
+
+                    <img class="review_item_star" src="./images/ic-star-full.svg">
+
+                    <img class="review_item_star" src="./images/ic-star-full.svg">
+
+                    <img class="review_item_star" src="./images/ic-star-half.svg">
+                    <span>4.5</span>
+                  </div>
+                </div>
+              </div>
+              <div class="review_item_content">이제는 약속이 잡히면 네이버보다 밥면빵을 먼저 꺼냅니다. 그리고 한 마디하죠 '장소는 내가 정할게' 밥면빵 하나면 센스있는
+                소개팅남, 남자친구, 남편이 될 수 있습니다. 아, 물론 저는 셋 중 아무것도 해당 안되는 사람입니다. 하지만, 밥면빵 덕분에 센스있는 아저씨가 됐어요.</div>
+            </li>
+            <li class="review_item glide__slide glide__slide--clone"
+              style="width: 348px; margin-left: 30px; margin-right: 30px;">
+              <div class="review_item_header">
+                <img class="review_item_img" src="./images/img-review-pf-ji.png">
+                <div class="review_item_reviewer">
+                  <div>
+                    <span class="review_item_reviewer_name">박종일</span>
+                    <span class="review_item_reviewer_info">29/리디북스 마케터</span>
+                  </div>
+                  <div class="review_item_rating">
+
+                    <img class="review_item_star" src="./images/ic-star-full.svg">
+
+                    <img class="review_item_star" src="./images/ic-star-full.svg">
+
+                    <img class="review_item_star" src="./images/ic-star-full.svg">
+
+                    <img class="review_item_star" src="./images/ic-star-full.svg">
+
+                    <img class="review_item_star" src="./images/ic-star-half.svg">
+                    <span>4.5</span>
+                  </div>
+                </div>
+              </div>
+              <div class="review_item_content">미팅이 잦은 편인데, 밥면빵 덕을 많이 보고 있어요. 시간을 아낄 수 있는 것은 물론, 소개 받은 장소도 매우 만족스러웠어요.
+                더이상 블로그를 헤메느라 시간낭비하지 않아도 되니 행복합니다.</div>
+            </li>
+            <li class="review_item glide__slide" style="width: 348px; margin-left: 30px; margin-right: 30px;">
+              <div class="review_item_header">
+                <img class="review_item_img" src="./images/img-review-pf-ge.png">
+                <div class="review_item_reviewer">
+                  <div>
+                    <span class="review_item_reviewer_name">김기은</span>
+                    <span class="review_item_reviewer_info">27/넷플릭스 에디터</span>
+                  </div>
+                  <div class="review_item_rating">
+
+                    <img class="review_item_star" src="./images/ic-star-full.svg">
+
+                    <img class="review_item_star" src="./images/ic-star-full.svg">
+
+                    <img class="review_item_star" src="./images/ic-star-full.svg">
+
+                    <img class="review_item_star" src="./images/ic-star-full.svg">
+
+                    <img class="review_item_star" src="./images/ic-star-full.svg">
+                    <span>5</span>
+                  </div>
+                </div>
+              </div>
+              <div class="review_item_content">“뭐 먹을래?“라는 질문만 들으면 숨이 막히는 제게 한줄기 빛이 되어준 밥면빵. 정말 감사합니다. 이젠 약속이 잡히면 제가 먼저
+                “기다려, 밥면빵에 물어보고 올게“라며 당당히 맛집을 주도해요. 제게 이런 날이 올줄 몰랐어요. 밥면빵, 사랑해, 영원해.</div>
+            </li>
+            <li class="review_item glide__slide" style="width: 348px; margin-left: 30px; margin-right: 30px;">
+              <div class="review_item_header">
+                <img class="review_item_img" src="./images/img-review-pf-gh.png">
+                <div class="review_item_reviewer">
+                  <div>
+                    <span class="review_item_reviewer_name">이가희</span>
+                    <span class="review_item_reviewer_info">34/뉴돛 대표</span>
+                  </div>
+                  <div class="review_item_rating">
+
+                    <img class="review_item_star" src="./images/ic-star-full.svg">
+
+                    <img class="review_item_star" src="./images/ic-star-full.svg">
+
+                    <img class="review_item_star" src="./images/ic-star-full.svg">
+
+                    <img class="review_item_star" src="./images/ic-star-full.svg">
+
+                    <img class="review_item_star" src="./images/ic-star-half.svg">
+                    <span>4.5</span>
+                  </div>
+                </div>
+              </div>
+              <div class="review_item_content">포멀한 식사자리나 단체모임 정보를 얻는데 너무 유용했어요. 자주 있는 일이 아니라서 정보도 없고 곤란했었는데 추천해주시는 장소가
+                음식맛도 좋았지만 분위기도 너무 좋았어요. 검색은 한계가 있는데 대화를 하면서 하니까 조건에 맞는 곳을 잘 찾아주셨어요. 다정하고 친절하셔서 사랑에 빠질것 같아요💕 추천한 곳 모두
+                완전만족입니다!!</div>
+            </li>
+            <li class="review_item glide__slide" style="width: 348px; margin-left: 30px; margin-right: 30px;">
+              <div class="review_item_header">
+                <img class="review_item_img" src="./images/img-review-pf-ib.png">
+                <div class="review_item_reviewer">
+                  <div>
+                    <span class="review_item_reviewer_name">황인범</span>
+                    <span class="review_item_reviewer_info">31/스타트업 종사자</span>
+                  </div>
+                  <div class="review_item_rating">
+
+                    <img class="review_item_star" src="./images/ic-star-full.svg">
+
+                    <img class="review_item_star" src="./images/ic-star-full.svg">
+
+                    <img class="review_item_star" src="./images/ic-star-full.svg">
+
+                    <img class="review_item_star" src="./images/ic-star-full.svg">
+
+                    <img class="review_item_star" src="./images/ic-star-full.svg">
+                    <span>5</span>
+                  </div>
+                </div>
+              </div>
+              <div class="review_item_content">요즘 여자친구에게 듬뿍 사랑받는 중입니다. 이렇게 좋은 서비스가 정말 많은 사람들에게 알려지면 좋겠어요. 딱 제 여자친구만 빼고
+                모든 사람에게 알려지면 모두가 행복해질겁니다~</div>
+            </li>
+            <li class="review_item glide__slide" style="width: 348px; margin-left: 30px; margin-right: 30px;">
+              <div class="review_item_header">
+                <img class="review_item_img" src="./images/img-review-pf-uj.jpg">
+                <div class="review_item_reviewer">
+                  <div>
+                    <span class="review_item_reviewer_name">주어진</span>
+                    <span class="review_item_reviewer_info">27/클래스101 마케터</span>
+                  </div>
+                  <div class="review_item_rating">
+
+                    <img class="review_item_star" src="./images/ic-star-full.svg">
+
+                    <img class="review_item_star" src="./images/ic-star-full.svg">
+
+                    <img class="review_item_star" src="./images/ic-star-full.svg">
+
+                    <img class="review_item_star" src="./images/ic-star-full.svg">
+
+                    <img class="review_item_star" src="./images/ic-star-full.svg">
+                    <span>5</span>
+                  </div>
+                </div>
+              </div>
+              <div class="review_item_content">어디가 맛있더라, 분위기가 좋더라 하는 맛집에 대한 단편적인 정보가 있어도 TPO에 맞게 떠올리기는 쉽지 않습니다. 밥면빵은 조건에
+                부합하는 선택지를 제공해줘서 고민의 시간과 폭을 크게 단축시켜줍니다. 서비스가 주는 경험 치고 가격도 매우 합리적이기에 추천합니다!</div>
+            </li>
+            <li class="review_item glide__slide" style="width: 348px; margin-left: 30px; margin-right: 30px;">
+              <div class="review_item_header">
+                <img class="review_item_img" src="./images/img-review-pf-mj.png">
+                <div class="review_item_reviewer">
+                  <div>
+                    <span class="review_item_reviewer_name">윤민지</span>
+                    <span class="review_item_reviewer_info">26/눈누 디자이너</span>
+                  </div>
+                  <div class="review_item_rating">
+
+                    <img class="review_item_star" src="./images/ic-star-full.svg">
+
+                    <img class="review_item_star" src="./images/ic-star-full.svg">
+
+                    <img class="review_item_star" src="./images/ic-star-full.svg">
+
+                    <img class="review_item_star" src="./images/ic-star-full.svg">
+
+                    <img class="review_item_star" src="./images/ic-star-half.svg">
+                    <span>4.5</span>
+                  </div>
+                </div>
+              </div>
+              <div class="review_item_content">발에 깁스를 하게 되면서 롱데이 밥면빵을 신청했어요. 데이트할 때 맛집을 많이 다니는데, 목발을 짚게 되면서 엘레베이터가 없는
+                건물의 1층이 아닌 가게를 찾는데 시간이 무척 오래 걸렸어요. 이런 고민을 밥면빵이 모두 해결해 주었습니다! 추천해주시는 맛집 뿐만 아니라 팁으로 알려주시는 디저트 가게도 만족스러웠어요.
+                밥면빵 최고!!</div>
+            </li>
+            <li class="review_item glide__slide" style="width: 348px; margin-left: 30px; margin-right: 30px;">
+              <div class="review_item_header">
+                <img class="review_item_img" src="./images/img-review-pf-jw.png">
+                <div class="review_item_reviewer">
+                  <div>
+                    <span class="review_item_reviewer_name">이재욱</span>
+                    <span class="review_item_reviewer_info">27/프리랜서(재활,운동)</span>
+                  </div>
+                  <div class="review_item_rating">
+
+                    <img class="review_item_star" src="./images/ic-star-full.svg">
+
+                    <img class="review_item_star" src="./images/ic-star-full.svg">
+
+                    <img class="review_item_star" src="./images/ic-star-full.svg">
+
+                    <img class="review_item_star" src="./images/ic-star-full.svg">
+
+                    <img class="review_item_star" src="./images/ic-star-full.svg">
+                    <span>5</span>
+                  </div>
+                </div>
+              </div>
+              <div class="review_item_content">네이버에서 검색해서 굳이 블로그를 보지 않아도 되고, 가장 큰 장점은 내가 원하는 테마를 3개 이상 말해도 모든 걸 감안해서
+                추천해주기 때문에 너무 만족스럽습니다. 3곳을 추천해주는데 다 가 볼 정도에요ㅎㅎ 친구들과 만나거나, 연인과 데이트할 때 식상하고 흔한 곳에 익숙해지지 않기 위한 최고의
+                선택입니다🙇🏻‍♂️</div>
+            </li>
+            <li class="review_item glide__slide glide__slide--active"
+              style="width: 348px; margin-left: 30px; margin-right: 30px;">
+              <div class="review_item_header">
+                <img class="review_item_img" src="./images/img-review-pf-kw.png">
+                <div class="review_item_reviewer">
+                  <div>
+                    <span class="review_item_reviewer_name">김경욱</span>
+                    <span class="review_item_reviewer_info">33/마트오빠</span>
+                  </div>
+                  <div class="review_item_rating">
+
+                    <img class="review_item_star" src="./images/ic-star-full.svg">
+
+                    <img class="review_item_star" src="./images/ic-star-full.svg">
+
+                    <img class="review_item_star" src="./images/ic-star-full.svg">
+
+                    <img class="review_item_star" src="./images/ic-star-full.svg">
+
+                    <img class="review_item_star" src="./images/ic-star-half.svg">
+                    <span>4.5</span>
+                  </div>
+                </div>
+              </div>
+              <div class="review_item_content">이제는 약속이 잡히면 네이버보다 밥면빵을 먼저 꺼냅니다. 그리고 한 마디하죠 '장소는 내가 정할게' 밥면빵 하나면 센스있는
+                소개팅남, 남자친구, 남편이 될 수 있습니다. 아, 물론 저는 셋 중 아무것도 해당 안되는 사람입니다. 하지만, 밥면빵 덕분에 센스있는 아저씨가 됐어요.</div>
+            </li>
+            <li class="review_item glide__slide" style="width: 348px; margin-left: 30px; margin-right: 30px;">
+              <div class="review_item_header">
+                <img class="review_item_img" src="./images/img-review-pf-ji.png">
+                <div class="review_item_reviewer">
+                  <div>
+                    <span class="review_item_reviewer_name">박종일</span>
+                    <span class="review_item_reviewer_info">29/리디북스 마케터</span>
+                  </div>
+                  <div class="review_item_rating">
+
+                    <img class="review_item_star" src="./images/ic-star-full.svg">
+
+                    <img class="review_item_star" src="./images/ic-star-full.svg">
+
+                    <img class="review_item_star" src="./images/ic-star-full.svg">
+
+                    <img class="review_item_star" src="./images/ic-star-full.svg">
+
+                    <img class="review_item_star" src="./images/ic-star-half.svg">
+                    <span>4.5</span>
+                  </div>
+                </div>
+              </div>
+              <div class="review_item_content">미팅이 잦은 편인데, 밥면빵 덕을 많이 보고 있어요. 시간을 아낄 수 있는 것은 물론, 소개 받은 장소도 매우 만족스러웠어요.
+                더이상 블로그를 헤메느라 시간낭비하지 않아도 되니 행복합니다.</div>
+            </li>
+            <li class="review_item glide__slide glide__slide--clone"
+              style="width: 348px; margin-left: 30px; margin-right: 30px;">
+              <div class="review_item_header">
+                <img class="review_item_img" src="./images/img-review-pf-ge.png">
+                <div class="review_item_reviewer">
+                  <div>
+                    <span class="review_item_reviewer_name">김기은</span>
+                    <span class="review_item_reviewer_info">27/넷플릭스 에디터</span>
+                  </div>
+                  <div class="review_item_rating">
+
+                    <img class="review_item_star" src="./images/ic-star-full.svg">
+
+                    <img class="review_item_star" src="./images/ic-star-full.svg">
+
+                    <img class="review_item_star" src="./images/ic-star-full.svg">
+
+                    <img class="review_item_star" src="./images/ic-star-full.svg">
+
+                    <img class="review_item_star" src="./images/ic-star-full.svg">
+                    <span>5</span>
+                  </div>
+                </div>
+              </div>
+              <div class="review_item_content">“뭐 먹을래?“라는 질문만 들으면 숨이 막히는 제게 한줄기 빛이 되어준 밥면빵. 정말 감사합니다. 이젠 약속이 잡히면 제가 먼저
+                “기다려, 밥면빵에 물어보고 올게“라며 당당히 맛집을 주도해요. 제게 이런 날이 올줄 몰랐어요. 밥면빵, 사랑해, 영원해.</div>
+            </li>
+            <li class="review_item glide__slide glide__slide--clone"
+              style="width: 348px; margin-left: 30px; margin-right: 30px;">
+              <div class="review_item_header">
+                <img class="review_item_img" src="./images/img-review-pf-gh.png">
+                <div class="review_item_reviewer">
+                  <div>
+                    <span class="review_item_reviewer_name">이가희</span>
+                    <span class="review_item_reviewer_info">34/뉴돛 대표</span>
+                  </div>
+                  <div class="review_item_rating">
+
+                    <img class="review_item_star" src="./images/ic-star-full.svg">
+
+                    <img class="review_item_star" src="./images/ic-star-full.svg">
+
+                    <img class="review_item_star" src="./images/ic-star-full.svg">
+
+                    <img class="review_item_star" src="./images/ic-star-full.svg">
+
+                    <img class="review_item_star" src="./images/ic-star-half.svg">
+                    <span>4.5</span>
+                  </div>
+                </div>
+              </div>
+              <div class="review_item_content">포멀한 식사자리나 단체모임 정보를 얻는데 너무 유용했어요. 자주 있는 일이 아니라서 정보도 없고 곤란했었는데 추천해주시는 장소가
+                음식맛도 좋았지만 분위기도 너무 좋았어요. 검색은 한계가 있는데 대화를 하면서 하니까 조건에 맞는 곳을 잘 찾아주셨어요. 다정하고 친절하셔서 사랑에 빠질것 같아요💕 추천한 곳 모두
+                완전만족입니다!!</div>
+            </li>
+            <li class="review_item glide__slide glide__slide--clone" style="width: 348px; margin-left: 30px;">
+              <div class="review_item_header">
+                <img class="review_item_img" src="./images/img-review-pf-ib.png">
+                <div class="review_item_reviewer">
+                  <div>
+                    <span class="review_item_reviewer_name">황인범</span>
+                    <span class="review_item_reviewer_info">31/스타트업 종사자</span>
+                  </div>
+                  <div class="review_item_rating">
+
+                    <img class="review_item_star" src="./images/ic-star-full.svg">
+
+                    <img class="review_item_star" src="./images/ic-star-full.svg">
+
+                    <img class="review_item_star" src="./images/ic-star-full.svg">
+
+                    <img class="review_item_star" src="./images/ic-star-full.svg">
+
+                    <img class="review_item_star" src="./images/ic-star-full.svg">
+                    <span>5</span>
+                  </div>
+                </div>
+              </div>
+              <div class="review_item_content">요즘 여자친구에게 듬뿍 사랑받는 중입니다. 이렇게 좋은 서비스가 정말 많은 사람들에게 알려지면 좋겠어요. 딱 제 여자친구만 빼고
+                모든 사람에게 알려지면 모두가 행복해질겁니다~</div>
+            </li>
+          </ul>
+        </div>
+        <div class="review_list_arrows glide__arrows" data-glide-el="controls">
+          <div class="review_list_arrow review_list_arrow-l glide__arrow glide__arrow--left" data-glide-dir="<"
+            src="./images/btn-arrow-circle-l.svg"></div>
+          <div class="review_list_arrow review_list_arrow-r glide__arrow glide__arrow--right" data-glide-dir=">"
+            src="./images/btn-arrow-circle-r.svg"></div>
+        </div>
+      </section>
+    </div>
+    <div id="landing_info" class="landing_info">
+      <section class="container">
+        <h2 class="landing_info_category">
+          <span>이용안내</span>
+        </h2>
+        <div class="landing_info_steps">
+          <div class="landing_info_step_one">
+            <p class="landing_info_step_number">1.</p>
+            <p class="landing_info_step_title">멤버십을 신청합니다.</p>
+            <p class="landing_info_step_description">30초 만에 바로 할 수 있어요!</p>
+            <a class="landing_info_button" href="#landing_mem">신청하기</a>
+          </div>
+          <div class="landing_info_step_two">
+            <p class="landing_info_step_number">2.</p>
+            <p class="landing_info_step_title">결제를 진행합니다.</p>
+            <p class="landing_info_step_description">멤버십 신청 완료시 결제 안내 메일을 보내드립니다.<br>결제는 계좌 이체로 진행됩니다.</p>
+          </div>
+          <div class="landing_info_step_three">
+            <p class="landing_info_step_number">3.</p>
+            <p class="landing_info_step_title">밥면빵 카카오톡 플러스친구를 <br>추가하고 질문을 시작해주세요!</p>
+            <p class="landing_info_step_description">“성수동 힙한 내추럴 와인바 추천해주세요!”<br>“내일이 여자친구랑 1,000일이에요ㅠㅠ”</p>
+            <a class="landing_info_button" href="http://pf.kakao.com/_xmMhxkj"><img src="images/img_ic_kakao_plus.svg"
+                alt="add kakao plus friend">플러스 친구 추가</a>
+          </div>
+        </div>
+        <div class="landing_infos_sub">
+          <div class="landing_info_sub_one">
+            <p class="landing_info_sub_main">최초 질문 후 2시간 이내에 답변을 드리며, 맛집 추천은 24시간 이내에 완료됩니다.</p>
+            <p>서울 지역에 한함. (타 지역 서비스 예정)</p>
+          </div>
+          <div class="landing_info_sub_two">
+            <p class="landing_info_sub_main">카카오톡 상담 시간 10:00 ~ 19:00</p>
+            <p>(매주 일요일, 월요일, 공휴일 휴무)</p>
+          </div>
+        </div>
+      </section>
+    </div>
+    <div id="landing_mem" class="landing_mem">
+      <section class="container">
+        <h2 class="landing_mem_category">
+          <span>신청하기</span>
+        </h2>
+        <h3>밥면빵 멤버십</h3>
+      </section>
+      <section class="landing_mem_container">
+        <div class="landing_mem_box_outer">
+          <div class="landing_mem_box_inner">
+            <div class="landing_mem_subtitle">1회권</div>
+            <div class="landing_mem_title landing_mem_title_one"></div>
+            <p class="landing_mem_price">
+              3,900
+              <span class="landing_mem_price_unit"> 원</span>
+            </p>
+            <div class="landing_mem_desc_list">
+              <div class="landing_mem_desc">
+                <div class="landing_mem_desc_label">·</div>
+                <p class="landing_mem_desc_content">1건의 추천을 의뢰할 수 있는 멤버십입니다.</p>
+              </div>
+              <div class="landing_mem_desc">
+                <div class="landing_mem_desc_label">·</div>
+                <p class="landing_mem_desc_content">결제 후 7일 이내에 멤버십을 사용하셔야하며, 결제일 +7일에 멤버십이 소멸됩니다.</p>
+              </div>
+              <div class="landing_mem_desc landing_mem_desc_not_main">
+                <div class="landing_mem_desc_label">·</div>
+                <p class="landing_mem_desc_content">질문 접수는 2시간 이내로 답변을 드리며, 밥면빵 코디네이터의 정성스러운 추천은 24시간 이내에 도착합니다.</p>
+              </div>
+              <div class="landing_mem_desc landing_mem_desc_not_main">
+                <div class="landing_mem_desc_label">·</div>
+                <p class="landing_mem_desc_content">현재 추천이 가능한 지역은 서울입니다.</p>
+              </div>
+            </div>
+            <a class="landing_mem_button landing_mem_button_disabled">신청하기</a>
+          </div>
+        </div>
+        <div class="landing_mem_box_outer">
+          <div class="landing_mem_box_inner">
+            <div class="landing_mem_subtitle">1개월권</div>
+            <div class="landing_mem_title landing_mem_title_long"></div>
+            <p class="landing_mem_price">
+              9,900
+              <span class="landing_mem_price_unit"> 원</span>
+            </p>
+            <div class="landing_mem_desc_list">
+              <div class="landing_mem_desc">
+                <div class="landing_mem_desc_label">·</div>
+                <p class="landing_mem_desc_content">28일 동안 횟수 제한 없이 의뢰할 수 있는 멤버십입니다.</p>
+              </div>
+              <div class="landing_mem_desc">
+                <div class="landing_mem_desc_label">·</div>
+                <p class="landing_mem_desc_content">결제일부터 멤버십이 시작되며, 결제일 +28일에 멤버십이 소멸됩니다.</p>
+              </div>
+              <div class="landing_mem_desc landing_mem_desc_not_main">
+                <div class="landing_mem_desc_label">·</div>
+                <p class="landing_mem_desc_content">질문 접수는 2시간 이내로 답변을 드리며, 밥면빵 코디네이터의 정성스러운 추천은 24시간 이내에 도착합니다.</p>
+              </div>
+              <div class="landing_mem_desc landing_mem_desc_not_main">
+                <div class="landing_mem_desc_label">·</div>
+                <p class="landing_mem_desc_content">현재 추천이 가능한 지역은 서울입니다.</p>
+              </div>
+            </div>
+            <a class="landing_mem_button landing_mem_button_disabled">신청하기</a>
+          </div>
+        </div>
+        <div class="landing_mem_box_outer">
+          <div class="landing_mem_box_inner">
+            <div class="landing_mem_subtitle">3개월권</div>
+            <div class="landing_mem_title landing_mem_title_longlong"></div>
+            <div class="landing_mem_price_container">
+              <div class="landing_mem_price_original">
+                <div class="landing_mem_price_longlong_discount"></div>
+                <p class="landing_mem_price_original_value">29,700</p>
+              </div>
+              <p class="landing_mem_price">
+                26,900
+                <span class="landing_mem_price_unit"> 원</span>
+              </p>
+            </div>
+            <div class="landing_mem_desc_list">
+              <div class="landing_mem_desc">
+                <div class="landing_mem_desc_label">·</div>
+                <p class="landing_mem_desc_content">84일 동안 횟수 제한 없이 의뢰할 수 있는 멤버십입니다.</p>
+              </div>
+              <div class="landing_mem_desc">
+                <div class="landing_mem_desc_label">·</div>
+                <p class="landing_mem_desc_content">결제일부터 멤버십이 시작되며, 결제일 +84일에 멤버십이 소멸됩니다.</p>
+              </div>
+              <div class="landing_mem_desc landing_mem_desc_not_main">
+                <div class="landing_mem_desc_label">·</div>
+                <p class="landing_mem_desc_content">질문 접수는 2시간 이내로 답변을 드리며, 밥면빵 코디네이터의 정성스러운 추천은 24시간 이내에 도착합니다.</p>
+              </div>
+              <div class="landing_mem_desc landing_mem_desc_not_main">
+                <div class="landing_mem_desc_label">·</div>
+                <p class="landing_mem_desc_content">현재 추천이 가능한 지역은 서울입니다.</p>
+              </div>
+            </div>
+            <a class="landing_mem_button landing_mem_button_disabled">신청하기</a>
+          </div>
+        </div>
+      </section>
+    </div>
+    <script>
+      const image_el = document.querySelector(".landing_main")
+      image_el.style.backgroundImage = "url('/images/w_main_tea.jpg')"
+      if (window.innerWidth > 900) {
+        image_el.style.backgroundPosition = "center center"
+      } else {
+        image_el.style.backgroundPosition = "calc(40%) 0px"
+      }
+
+      const video_el = document.querySelector(".landing_main_video")
+      video_el.src = "/videos/w_main_tea.mp4"
+      if (window.innerWidth > 900) {
+        video_el.style.objectPosition = "center center"
+      } else {
+        video_el.style.objectPosition = "calc(40%) 0px"
+      }
+      video_el.load()
+      video_el.play()
+      video_el.playbackRate = 0.5
+
+      if (typeof fbq !== "undefined") {
+        fbq('track', 'ViewContent')
+      }
+    </script>
+  </main>
+  <footer class="footer_theme_1">
+    <section class="container">
+      <div class="footer_left">
+        <div class="footer_infos">
+          <div class="footer_info">
+            <p>리노블 | 대표 : 임현근 | 주소 : 서울시 강남구 학동로 432</p>
+            <p>사업자 등록번호 : 214-60-78023 | 통신판매업 신고번호 : 2019-서울강남-01743</p>
+          </div>
+          <div class="footer_info">
+            <p><b>이메일</b></p>
+            <p>contact@rinobr.com</p>
+          </div>
+          <div class="footer_info">
+            <p><b>전화번호</b></p>
+            <p>070 - 7678 - 7840</p>
+          </div>
+        </div>
+        <div class="footer_terms">
+          <p>
+            <a href="https://rinobr.github.io/terms/service">서비스 이용약관</a>
+            |
+            <a href="https://rinobr.github.io/terms/personal"><b>개인정보 처리방침</b></a>
+          </p>
+        </div>
+      </div>
+      <div class="footer_right">
+        <div class="footer_logo"></div>
+        <div class="footer_rights">© 2020 All rights reserved.</div>
+      </div>
+    </section>
+  </footer>
+  <script type="text/javascript" src="./app.js"></script>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5R3QGMP" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+
+  <script>window.__vidChanged = function (state) { if (state === 1) { document.body.dispatchEvent(new Event('vidChanged')) } }
+    if (document.querySelector('#movie_player')) { document.querySelector('#movie_player').addEventListener('onStateChange', '__vidChanged'); }</script>
+  <script>window.__vidChanged = function (state) { if (state === 1) { document.body.dispatchEvent(new Event('vidChanged')) } }
+    if (document.querySelector('#movie_player')) { document.querySelector('#movie_player').addEventListener('onStateChange', '__vidChanged'); }</script>
+  <div id="yReplayBox" class="html5Controls" style="position: absolute; z-index: 920; left: 0px; top: 1306px;">
+    <div class="checkbox-container"><label class="replay-container" data-children-count="1"><input type="checkbox"
+          check="false" class="checkbox" style="margin-top: 2px;"><span class="checkbox-custom"></span></label>
+      <div class="text">Auto Replay</div>
+    </div>
+    <div class="options">
+      <div class="optionsContainer" style="margin-top: -1px;" data-children-count="3"><span class="texts">Replay
+          From</span><input class="inputs" id="yStartSeekTime"><span class="texts">To</span><input class="inputs"
+          id="yEndSeekTime"><span class="texts">Cycles</span><input class="inputs cycles noCycles" id="yCycles"></div>
+    </div>
+    <div class="expander" title="Show Auto Replay Options"><svg id="Group_20" data-name="Group 20"
+        xmlns="http://www.w3.org/2000/svg" width="11.928" height="11.996" viewBox="0 0 11.928 11.996">
+        <path id="chevron_right"
+          d="M9.292,11.28a.75.75,0,0,0-.22.53v.38a.77.77,0,0,0,.22.53l5.14,5.13a.5.5,0,0,0,.71,0l.71-.71a.49.49,0,0,0,0-.7L11.4,12l4.45-4.44a.5.5,0,0,0,0-.71l-.71-.7a.5.5,0,0,0-.71,0Z"
+          transform="translate(-4.072 -6.002)" fill="#fff"></path>
+        <path id="chevron_right-2" data-name="chevron_right"
+          d="M9.292,11.28a.75.75,0,0,0-.22.53v.38a.77.77,0,0,0,.22.53l5.14,5.13a.5.5,0,0,0,.71,0l.71-.71a.49.49,0,0,0,0-.7L11.4,12l4.45-4.44a.5.5,0,0,0,0-.71l-.71-.7a.5.5,0,0,0-.71,0Z"
+          transform="translate(-9.072 -6.002)" fill="#fff"></path>
+      </svg></div>
+    <div class="fav-button" style="background-color: rgb(44, 44, 44);"><svg xmlns="http://www.w3.org/2000/svg"
+        width="16.888" height="16" viewBox="0 0 16.888 16">
+        <path id="star_outlined"
+          d="M10.417,4.872m1.566,3.756,4.05.32-3.09,2.636.943,3.941L10.417,13.41,6.939,15.524l.952-3.941L4.8,8.947l4.05-.32,1.566-3.756ZM10.307,2a.429.429,0,0,0-.4.269L7.84,7.229l-5.381.429a.413.413,0,0,0-.371.295L2,8.164a.413.413,0,0,0,.126.455l4.084,3.486L4.993,17.343a.429.429,0,0,0,.16.446l.211.126A.4.4,0,0,0,5.617,18a.4.4,0,0,0,.219-.059l4.581-2.8,4.606,2.8a.4.4,0,0,0,.219.059.4.4,0,0,0,.253-.084l.185-.126a.429.429,0,0,0,.16-.446l-1.213-5.238L18.72,8.61a.413.413,0,0,0,.118-.446l-.067-.211a.413.413,0,0,0-.371-.295l-5.381-.429-2.1-4.96a.413.413,0,0,0-.4-.269Z"
+          transform="translate(-1.972 -2)" fill="#afafaf"></path>
+      </svg></div>
+    <div class="ads-button"><label class="ads-container" data-children-count="1"><input type="checkbox" class="checkbox"
+          style="margin-top: 2px;"><span class="checkbox-custom"></span></label><span class="ads-text">Block Ads</span>
+    </div>
+  </div>
+</body>
+
+</html>

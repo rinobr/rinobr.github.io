@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="17" viewBox="0 0 16 17">
+    <defs>
+        <rect id="b" width="510" height="243" rx="4"/>
+        <filter id="a" width="106.1%" height="112.8%" x="-2.6%" y="-3.9%" filterUnits="objectBoundingBox">
+            <feMorphology in="SourceAlpha" operator="dilate" radius=".5" result="shadowSpreadOuter1"/>
+            <feOffset dx="2" dy="6" in="shadowSpreadOuter1" result="shadowOffsetOuter1"/>
+            <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="4"/>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"/>
+            <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0.109803922 0 0 0 0 0.149019608 0 0 0 0 0.2 0 0 0 0.3 0"/>
+        </filter>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <path fill="#FFFBF4" d="M-1186-1504H734V923h-1920z"/>
+        <text fill="#1C2633" font-family="NotoSansCJKkr-Bold, Noto Sans CJK KR" font-size="20" font-weight="bold" transform="translate(-1186 -445)">
+            <tspan x="910" y="475">2. 회원 정보 입력</tspan>
+        </text>
+        <g transform="translate(-481 -12.5)">
+            <use fill="#000" filter="url(#a)" xlink:href="#b"/>
+            <use fill="#EFF2EE" stroke="#1C2633" xlink:href="#b"/>
+        </g>
+        <path d="M0 .5h16v16H0z"/>
+        <path stroke="#1C2633" stroke-linecap="square" stroke-width="1.5" d="M3.313 3.813l9.375 9.375M3.313 13.187l9.375-9.375"/>
+    </g>
+</svg>
