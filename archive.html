@@ -17,51 +17,6 @@
   <link rel="stylesheet" href="./app.css">
   <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,500,700" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
-  <!-- Facebook Pixel -->
-  <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
-  <script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-5R3QGMP"></script>
-  <script src="https://connect.facebook.net/signals/config/623906851445668?v=2.9.27&amp;r=stable" async=""></script>
-  <script async="" src="https://connect.facebook.net/en_US/fbevents.js"></script>
-  <script>
-    !function (f, b, e, v, n, t, s) {
-      if (f.fbq) return; n = f.fbq = function () {
-        n.callMethod ?
-          n.callMethod.apply(n, arguments) : n.queue.push(arguments)
-      };
-      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
-      n.queue = []; t = b.createElement(e); t.async = !0;
-      t.src = v; s = b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t, s)
-    }(window, document, 'script',
-      'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '623906851445668');
-    fbq('track', 'PageView');
-  </script>
-  <noscript><img height="1" width="1" style="display:none"
-      src="https://www.facebook.com/tr?id=623906851445668&ev=PageView&noscript=1" /></noscript>
-  <!-- End Facebook Pixel -->
-  <!-- Google Analytics -->
-  <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-138212112-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-
-    gtag('config', 'UA-138212112-1');
-  </script>
-  <!-- End Google Analytics -->
-  <!-- Google Tag Manager -->
-  <script>
-    (function (w, d, s, l, i) {
-      w[l] = w[l] || []; w[l].push({
-        'gtm.start':
-          new Date().getTime(), event: 'gtm.js'
-      }); var f = d.getElementsByTagName(s)[0],
-        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-    })(window, document, 'script', 'dataLayer', 'GTM-5R3QGMP');
-  </script>
-  <!-- End Google Tag Manager -->
 </head>
 
 <body style="margin-bottom: 18px;">
@@ -772,7 +727,7 @@
     </div>
     <script>
       const image_el = document.querySelector(".landing_main")
-          image_el.style.backgroundImage = "url('./images/w_main_tea.jpg')"
+      image_el.style.backgroundImage = "url('./images/w_main_tea.jpg')"
       if (window.innerWidth > 900) {
         image_el.style.backgroundPosition = "center center"
       } else {
@@ -780,7 +735,7 @@
       }
 
       const video_el = document.querySelector(".landing_main_video")
-        video_el.src = "./videos/w_main_tea.mp4"
+      video_el.src = "./videos/w_main_tea.mp4"
       if (window.innerWidth > 900) {
         video_el.style.objectPosition = "center center"
       } else {
@@ -827,45 +782,6 @@
     </section>
   </footer>
   <script type="text/javascript" src="./app.js"></script>
-  <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5R3QGMP" height="0" width="0"
-      style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
-
-
-  <script>window.__vidChanged = function (state) { if (state === 1) { document.body.dispatchEvent(new Event('vidChanged')) } }
-    if (document.querySelector('#movie_player')) { document.querySelector('#movie_player').addEventListener('onStateChange', '__vidChanged'); }</script>
-  <script>window.__vidChanged = function (state) { if (state === 1) { document.body.dispatchEvent(new Event('vidChanged')) } }
-    if (document.querySelector('#movie_player')) { document.querySelector('#movie_player').addEventListener('onStateChange', '__vidChanged'); }</script>
-  <div id="yReplayBox" class="html5Controls" style="position: absolute; z-index: 920; left: 0px; top: 1306px;">
-    <div class="checkbox-container"><label class="replay-container" data-children-count="1"><input type="checkbox"
-          check="false" class="checkbox" style="margin-top: 2px;"><span class="checkbox-custom"></span></label>
-      <div class="text">Auto Replay</div>
-    </div>
-    <div class="options">
-      <div class="optionsContainer" style="margin-top: -1px;" data-children-count="3"><span class="texts">Replay
-          From</span><input class="inputs" id="yStartSeekTime"><span class="texts">To</span><input class="inputs"
-          id="yEndSeekTime"><span class="texts">Cycles</span><input class="inputs cycles noCycles" id="yCycles"></div>
-    </div>
-    <div class="expander" title="Show Auto Replay Options"><svg id="Group_20" data-name="Group 20"
-        xmlns="http://www.w3.org/2000/svg" width="11.928" height="11.996" viewBox="0 0 11.928 11.996">
-        <path id="chevron_right"
-          d="M9.292,11.28a.75.75,0,0,0-.22.53v.38a.77.77,0,0,0,.22.53l5.14,5.13a.5.5,0,0,0,.71,0l.71-.71a.49.49,0,0,0,0-.7L11.4,12l4.45-4.44a.5.5,0,0,0,0-.71l-.71-.7a.5.5,0,0,0-.71,0Z"
-          transform="translate(-4.072 -6.002)" fill="#fff"></path>
-        <path id="chevron_right-2" data-name="chevron_right"
-          d="M9.292,11.28a.75.75,0,0,0-.22.53v.38a.77.77,0,0,0,.22.53l5.14,5.13a.5.5,0,0,0,.71,0l.71-.71a.49.49,0,0,0,0-.7L11.4,12l4.45-4.44a.5.5,0,0,0,0-.71l-.71-.7a.5.5,0,0,0-.71,0Z"
-          transform="translate(-9.072 -6.002)" fill="#fff"></path>
-      </svg></div>
-    <div class="fav-button" style="background-color: rgb(44, 44, 44);"><svg xmlns="http://www.w3.org/2000/svg"
-        width="16.888" height="16" viewBox="0 0 16.888 16">
-        <path id="star_outlined"
-          d="M10.417,4.872m1.566,3.756,4.05.32-3.09,2.636.943,3.941L10.417,13.41,6.939,15.524l.952-3.941L4.8,8.947l4.05-.32,1.566-3.756ZM10.307,2a.429.429,0,0,0-.4.269L7.84,7.229l-5.381.429a.413.413,0,0,0-.371.295L2,8.164a.413.413,0,0,0,.126.455l4.084,3.486L4.993,17.343a.429.429,0,0,0,.16.446l.211.126A.4.4,0,0,0,5.617,18a.4.4,0,0,0,.219-.059l4.581-2.8,4.606,2.8a.4.4,0,0,0,.219.059.4.4,0,0,0,.253-.084l.185-.126a.429.429,0,0,0,.16-.446l-1.213-5.238L18.72,8.61a.413.413,0,0,0,.118-.446l-.067-.211a.413.413,0,0,0-.371-.295l-5.381-.429-2.1-4.96a.413.413,0,0,0-.4-.269Z"
-          transform="translate(-1.972 -2)" fill="#afafaf"></path>
-      </svg></div>
-    <div class="ads-button"><label class="ads-container" data-children-count="1"><input type="checkbox" class="checkbox"
-          style="margin-top: 2px;"><span class="checkbox-custom"></span></label><span class="ads-text">Block Ads</span>
-    </div>
-  </div>
 </body>
 
 </html>
